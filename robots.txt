@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://estratoagro.github.io/sitemap.xml
