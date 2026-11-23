@@ -821,13 +821,235 @@ section[id] {
   color: var(--emerald-dark);
 }
 
+/* ---------- Estudios Públicos ---------- */
+
+.study-feature-card {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.study-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--emerald-dark);
+  background: var(--emerald-tint);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.study-feature-copy h3 {
+  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  margin-bottom: 0.85rem;
+}
+
+.study-feature-copy p {
+  color: var(--ink-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.study-feature-media img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-white);
+}
+
+.study-container {
+  max-width: 860px;
+}
+
+.study-hero {
+  padding-block: clamp(3rem, 6vw, 4.75rem);
+}
+
+.study-back {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+}
+
+.study-back:hover {
+  color: var(--emerald-dark);
+}
+
+.study-hero h1 {
+  font-size: clamp(1.9rem, 3.8vw, 2.75rem);
+  margin-bottom: 1rem;
+}
+
+.study-lead {
+  font-size: 1.1rem;
+  color: var(--ink-secondary);
+  margin-bottom: 2rem;
+}
+
+.study-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.study-kpi {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.25rem;
+}
+
+.study-kpi strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  color: var(--emerald-dark);
+  margin-bottom: 0.25rem;
+}
+
+.study-kpi span {
+  font-size: 0.86rem;
+  color: var(--ink-secondary);
+}
+
+.study-prose h2 {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  margin-top: 2.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.study-prose h2:first-child {
+  margin-top: 0;
+}
+
+.study-prose p,
+.study-prose li {
+  color: var(--ink-secondary);
+  line-height: 1.72;
+  margin-bottom: 1rem;
+}
+
+.study-prose ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.study-formula {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--emerald);
+  border-radius: var(--radius-md);
+  padding: 0.95rem 1.25rem;
+  margin-block: 1.25rem;
+  overflow-x: auto;
+}
+
+.study-formula code {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.study-figure {
+  margin-block: 2rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.study-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  background: var(--bg-white);
+}
+
+.study-figure figcaption {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.study-table-wrap {
+  overflow-x: auto;
+  margin-block: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.study-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.study-table th,
+.study-table td {
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.study-table th {
+  background: var(--bg-soft);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.study-table tr:last-child td {
+  border-bottom: none;
+}
+
+.study-note {
+  background: var(--bg-soft);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  font-size: 0.92rem;
+}
+
+.study-cta-box {
+  margin-top: 3rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  text-align: left;
+}
+
+.study-cta-box h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.65rem;
+}
+
+.study-cta-box p {
+  margin-bottom: 1.35rem;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1020px) {
   .hero-grid,
   .sectors-grid,
   .steps-grid,
-  .contact-grid {
+  .contact-grid,
+  .study-feature-card {
+    grid-template-columns: 1fr;
+  }
+
+  .study-kpi-grid {
     grid-template-columns: 1fr;
   }
 

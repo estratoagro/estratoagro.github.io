@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelos Lineales Mixtos en Ensayos Multi-Ambiente — Estudio #1 | Estrato</title>
+  <meta name="description" content="Evaluación estadística de 14.978 parcelas de la red RET-INASE (2024/25–2025/26): por qué los BLUPs reducen en 69% el error de predicción frente al promedio simple.">
+  <link rel="canonical" href="https://estratoagro.github.io/estudios/modelos-mixtos-ensayos-multiambiente.html">
+  <meta property="og:title" content="Modelos Lineales Mixtos en Ensayos Multi-Ambiente — Estudio #1 | Estrato">
+  <meta property="og:description" content="Análisis sobre 14.978 parcelas reales de la red RET-INASE: BLUPs, interacción G×E, estabilidad Finlay-Wilkinson y probabilidad de retorno.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://estratoagro.github.io/estudios/modelos-mixtos-ensayos-multiambiente.html">
+  <meta property="og:image" content="https://estratoagro.github.io/assets/estudios/01/fig1_validacion_temporal.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@estratoagro">
+  <meta name="twitter:title" content="Modelos Lineales Mixtos en Ensayos Multi-Ambiente | Estrato">
+  <meta name="twitter:description" content="Sobre 14.978 parcelas reales de RET-INASE, el modelo mixto redujo en 69% el error de predicción inter-campaña frente al promedio simple.">
+  <meta name="twitter:image" content="https://estratoagro.github.io/assets/estudios/01/fig1_validacion_temporal.png">
+  <link rel="icon" type="image/png" href="../assets/estrato-profile.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Modelos Lineales Mixtos en Ensayos Comparativos Multi-Ambiente: BLUPs, Interacción G×E y Probabilidad de Retorno",
+    "author": {
+      "@type": "Organization",
+      "name": "Estrato",
+      "url": "https://estratoagro.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Estrato",
+      "url": "https://estratoagro.github.io/"
+    },
+    "datePublished": "2026-11-23",
+    "inLanguage": "es",
+    "mainEntityOfPage": "https://estratoagro.github.io/estudios/modelos-mixtos-ensayos-multiambiente.html",
+    "about": ["Modelos Lineales Mixtos", "BLUP", "Ensayos Comparativos de Rendimiento", "RET INASE", "Estadística Experimental Agronómica"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand" aria-label="Estrato — Inicio">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
+            <rect x="0" y="1" width="24" height="3" rx="1.5" fill="#0F172A"/>
+            <rect x="0" y="8.5" width="17" height="3" rx="1.5" fill="#0F172A"/>
+            <rect x="7" y="16" width="17" height="3" rx="1.5" fill="#10B981"/>
+          </svg>
+        </span>
+        <span class="brand-name">Estrato</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <a href="../index.html#que-hacemos">Qué hacemos</a>
+        <a href="../index.html#para-quien">Para quién</a>
+        <a href="../index.html#estudios">Estudios</a>
+        <a href="../index.html#contacto" class="nav-cta">Conversemos</a>
+      </nav>
+
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <article class="study-article">
+      <section class="section section-soft study-hero">
+        <div class="container study-container">
+          <a href="../index.html#estudios" class="study-back">&larr; Volver a Estrato</a>
+          <span class="section-eyebrow">Estudio Técnico #1 · Estadística Experimental</span>
+          <h1>Por qué el promedio simple engaña en redes de ensayos multi-ambiente</h1>
+          <p class="study-lead">
+            Evaluación con Modelos Lineales Mixtos (REML / BLUP) sobre <strong>14.978 parcelas reales</strong> de la Red de Ensayos Comparativos de Variedades de Trigo (RET-INASE, campañas 2024/25 y 2025/26).
+          </p>
+
+          <div class="study-kpi-grid">
+            <div class="study-kpi">
+              <strong>14.978</strong>
+              <span>Parcelas analizadas (169 ambientes)</span>
+            </div>
+            <div class="study-kpi">
+              <strong>-69%</strong>
+              <span>Reducción de error RMSE entre campañas</span>
+            </div>
+            <div class="study-kpi">
+              <strong>2,13&times;</strong>
+              <span>Peso de interacción G&times;E vs. genética pura</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-white">
+        <div class="container study-container study-prose">
+          <h2>1. El problema: redes desbalanceadas y sesgo ambiental</h2>
+          <p>
+            En redes reales de ensayos comparativos —ya sea evaluación de cultivares, bioinsumos o terápicos— no todos los tratamientos se evalúan en los mismos sitios ni en la misma cantidad de ambientes. Al consolidar las planillas oficiales de la RET-INASE para las campañas 2024/25 y 2025/26, observamos que de los materiales evaluados, más de la mitad aparece en tres o menos ambientes.
+          </p>
+          <p>
+            Si se ordena el desempeño mediante el promedio aritmético simple, un tratamiento evaluado únicamente en localidades de alto potencial (ej. Balcarce u Oliveros) aparece artificialmente por encima de materiales probados en 50 o más ambientes que incluyen zonas restrictivas.
+          </p>
+
+          <h2>2. Metodología: Modelo Lineal Mixto (REML / BLUP)</h2>
+          <p>
+            Para aislar el mérito genético real del efecto de cada campaña, localidad, época de siembra y manejo (con y sin fungicida), modelamos el rendimiento a nivel de parcela mediante un Modelo Lineal Mixto:
+          </p>
+          <div class="study-formula">
+            <code>rinde<sub>ijk</sub> = &mu; + Ambiente<sub>j</sub> + g<sub>i</sub> + (g &times; Ambiente)<sub>ij</sub> + &varepsilon;<sub>ijk</sub></code>
+          </div>
+          <p>
+            Sobre la red conectada (<strong>143 cultivares</strong> evaluados en al menos 5 ambientes, <strong>14.978 parcelas</strong>, media general de red de <strong>5.176 kg/ha</strong>), la estimación por Máxima Verosimilitud Restringida (REML) descompuso la varianza intra-ambiental en:
+          </p>
+          <ul>
+            <li><strong>Varianza Genética (&sigma;&sup2;<sub>G</sub>):</strong> 93.161 (10,0% — desvío estándar genético de 305 kg/ha).</li>
+            <li><strong>Interacción Genotipo &times; Ambiente (&sigma;&sup2;<sub>G&times;E</sub>):</strong> 198.302 (21,3% — <strong>2,13 veces</strong> mayor que la varianza genética pura).</li>
+            <li><strong>Error residual intra-ensayo (&sigma;&sup2;<sub>e</sub>):</strong> 638.425 (68,7%).</li>
+          </ul>
+
+          <figure class="study-figure">
+            <img src="../assets/estudios/01/fig2_varianza_y_shrinkage.png" alt="Descomposición de varianza REML y efecto shrinkage del BLUP frente al promedio simple" loading="lazy">
+            <figcaption>Izquierda: descomposición de la varianza intra-ambiental. Derecha: contracción (shrinkage) del BLUP frente al promedio simple sin ajustar.</figcaption>
+          </figure>
+
+          <h2>3. Validación fuera de muestra: campaña 2024/25 &rarr; 2025/26</h2>
+          <p>
+            Para medir capacidad predictiva real sin mirar el futuro, entrenamos ambos métodos únicamente con los datos de la campaña <strong>2024/25</strong> y evaluamos su precisión para predecir el desempeño relativo de los mismos cultivares en la campaña siguiente (<strong>2025/26</strong>):
+          </p>
+          <ul>
+            <li><strong>Promedio simple:</strong> RMSE de <strong>928 kg/ha</strong> y correlación entre campañas de <strong>r = 0,08</strong> (prácticamente ruido ambiental).</li>
+            <li><strong>Modelo Mixto (BLUP):</strong> RMSE de <strong>292 kg/ha</strong> (<strong>69% menos error</strong>) y correlación de <strong>r = 0,40</strong>.</li>
+          </ul>
+
+          <figure class="study-figure">
+            <img src="../assets/estudios/01/fig1_validacion_temporal.png" alt="Validación temporal entre campañas 2024/25 y 2025/26: Promedio simple vs BLUP" loading="lazy">
+            <figcaption>Comparación entre la predicción con datos 2024/25 y el desempeño real observado en 2025/26.</figcaption>
+          </figure>
+
+          <h2>4. Estabilidad agronómica y probabilidad de retorno</h2>
+          <p>
+            Dado que la interacción G&times;E duplica a la varianza genética pura, la decisión comercial requiere combinar potencial (BLUP), sensibilidad ambiental (pendiente <em>b</em> de Finlay-Wilkinson) y probabilidad de superar un umbral económico en un lote nuevo.
+          </p>
+
+          <figure class="study-figure">
+            <img src="../assets/estudios/01/fig3_estabilidad_vs_blup.png" alt="Mapa de rendimiento BLUP vs sensibilidad ambiental Finlay-Wilkinson" loading="lazy">
+            <figcaption>Cultivares evaluados en &ge; 15 ambientes. Eje horizontal: sensibilidad ambiental (b = 1 indica estabilidad promedio). Color: probabilidad de superar la media de la red.</figcaption>
+          </figure>
+
+          <div class="study-table-wrap">
+            <table class="study-table">
+              <thead>
+                <tr>
+                  <th>Cultivar</th>
+                  <th>Ambientes</th>
+                  <th>Media simple</th>
+                  <th>BLUP ajustado</th>
+                  <th>Sensibilidad (b)</th>
+                  <th>Prob. &gt; Media</th>
+                  <th>Prob. &gt; +300 kg/ha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>CASUARINA</strong></td><td>40</td><td>6.773 kg/ha</td><td><strong>5.946 kg/ha</strong></td><td>1,10</td><td>95,4%</td><td>84,9%</td></tr>
+                <tr><td><strong>NEO 51T25</strong></td><td>18</td><td>6.992 kg/ha</td><td><strong>5.921 kg/ha</strong></td><td>1,17</td><td>94,5%</td><td>83,0%</td></tr>
+                <tr><td><strong>BANDURRIA</strong></td><td>21</td><td>7.025 kg/ha</td><td><strong>5.771 kg/ha</strong></td><td>0,97</td><td>90,0%</td><td>73,8%</td></tr>
+                <tr><td><strong>PEHUEN</strong></td><td>83</td><td>5.857 kg/ha</td><td><strong>5.726 kg/ha</strong></td><td>1,09</td><td>88,9%</td><td>71,1%</td></tr>
+                <tr><td><strong>NEO 70T25</strong></td><td>18</td><td>6.761 kg/ha</td><td><strong>5.717 kg/ha</strong></td><td>0,98</td><td>87,7%</td><td>69,8%</td></tr>
+                <tr><td><strong>ARAUCARIA</strong></td><td>76</td><td>5.892 kg/ha</td><td><strong>5.656 kg/ha</strong></td><td>1,10</td><td>85,6%</td><td>65,5%</td></tr>
+                <tr><td><strong>LG LOBUNO</strong></td><td>50</td><td>5.975 kg/ha</td><td><strong>5.646 kg/ha</strong></td><td>1,18</td><td>85,0%</td><td>64,6%</td></tr>
+                <tr><td><strong>BAGUETTE 820</strong></td><td>28</td><td>6.174 kg/ha</td><td><strong>5.618 kg/ha</strong></td><td>1,11</td><td>83,2%</td><td>62,1%</td></tr>
+                <tr><td><strong>IS TERO</strong></td><td>40</td><td>5.224 kg/ha</td><td><strong>5.609 kg/ha</strong></td><td>1,13</td><td>82,9%</td><td>61,5%</td></tr>
+                <tr><td><strong>TIPA</strong></td><td>36</td><td>6.108 kg/ha</td><td><strong>5.562 kg/ha</strong></td><td>1,01</td><td>80,1%</td><td>57,5%</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="study-note">
+            <strong>Lectura práctica:</strong> Materiales como <em>IS TERO</em> muestran un promedio simple modesto (5.224 kg/ha) por haber sido evaluados con mayor frecuencia en ambientes restrictivos, pero el ajuste por ambiente revela un potencial real de 5.609 kg/ha. En contraste, <em>BANDURRIA</em> y <em>TIPA</em> combinan alto BLUP con sensibilidad cercana a 1,0 (estabilidad consistente entre ambientes).
+          </p>
+
+          <div class="study-cta-box">
+            <h3>¿Necesitás analizar tu propia red de ensayos?</h3>
+            <p>
+              Aplicamos modelos mixtos, análisis espacial y estimación de retorno económico sobre tus ensayos a campo, redes de distribuidores o validación de productos AgTech.
+            </p>
+            <a href="../index.html#contacto" class="btn btn-primary">Conversemos sobre tus datos</a>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">Estrato</span>
+        <span class="footer-sep" aria-hidden="true">&middot;</span>
+        <span>Análisis personalizados de datos para productores, agroindustria y AgTech</span>
+      </div>
+      <div class="footer-copy">
+        <a href="https://x.com/estratoagro" class="footer-link" target="_blank" rel="noopener noreferrer">X (@estratoagro)</a>
+        <span class="footer-sep" aria-hidden="true">&middot;</span>
+        &copy; <span id="year">2026</span> Estrato
+      </div>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+</html>
