@@ -803,8 +803,22 @@ section[id] {
 }
 
 .footer-copy {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 0.85rem;
   color: var(--ink-muted);
+}
+
+.footer-link {
+  color: var(--ink-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+  color: var(--emerald-dark);
 }
 
 /* ---------- Responsive ---------- */
