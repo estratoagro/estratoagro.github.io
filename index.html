@@ -103,21 +103,128 @@
         </div>
 
         <div class="hero-media">
-          <div class="video-frame">
-            <video
-              class="hero-video"
-              src="assets/aerial.mp4"
-              poster="assets/hero-poster.webp"
-              autoplay
-              loop
-              muted
-              playsinline
-            ></video>
-            <div class="video-glass-card">
-              <span class="glass-dot" aria-hidden="true"></span>
-              <div>
+          <div class="video-frame hero-showcase" id="hero-showcase" role="region" aria-label="Demostración animada de análisis de datos en el agro">
+            <div class="showcase-stage">
+              <!-- Escena 0: Productores — GIS & Zonificación -->
+              <div class="showcase-slide is-active" data-scene="0" aria-hidden="false">
+                <picture class="showcase-bg kb-zoom-in">
+                  <source srcset="assets/field-productores.webp" type="image/webp">
+                  <img src="assets/field-productores.jpg" alt="" aria-hidden="true" fetchpriority="high">
+                </picture>
+                <div class="showcase-scrim" aria-hidden="true"></div>
+                <svg class="showcase-overlay" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="rgba(16,185,129,0)"/>
+                      <stop offset="50%" stop-color="rgba(16,185,129,0.45)"/>
+                      <stop offset="100%" stop-color="rgba(16,185,129,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <polygon class="gis-zone gis-z1" points="55,155 235,120 275,255 110,300"/>
+                  <polygon class="gis-zone gis-z2" points="235,120 430,145 455,275 275,255"/>
+                  <polygon class="gis-zone gis-z3" points="110,300 275,255 390,340 165,375"/>
+                  <rect class="scan-beam" x="0" y="95" width="110" height="310" fill="url(#scanGrad)"/>
+                  <circle class="geo-pin p1" cx="165" cy="215" r="5"/>
+                  <circle class="geo-pin p2" cx="345" cy="200" r="5"/>
+                  <circle class="geo-pin p3" cx="255" cy="310" r="5"/>
+                </svg>
+                <div class="showcase-card">
+                  <span class="showcase-tag">GIS · Producción Primaria</span>
+                  <strong class="showcase-metric" data-counter="14.2" data-prefix="+" data-suffix="%" data-decimals="1">+14,2%</strong>
+                  <span class="showcase-sub">Margen bruto por ambiente</span>
+                  <div class="mini-bars" aria-hidden="true">
+                    <span class="mini-bar"><i style="--bar-h:62%; --d:0.25s"></i></span>
+                    <span class="mini-bar"><i style="--bar-h:84%; --d:0.4s"></i></span>
+                    <span class="mini-bar"><i style="--bar-h:96%; --d:0.55s"></i></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Escena 1: Agroindustria — LMM / BLUP -->
+              <div class="showcase-slide" data-scene="1" aria-hidden="true">
+                <picture class="showcase-bg kb-zoom-out">
+                  <source srcset="assets/field-agroindustria.webp" type="image/webp">
+                  <img src="assets/field-agroindustria.jpg" alt="" aria-hidden="true">
+                </picture>
+                <div class="showcase-scrim" aria-hidden="true"></div>
+                <svg class="showcase-overlay" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <g class="stat-grid" stroke="rgba(255,255,255,0.22)" stroke-width="1">
+                    <line x1="70" y1="160" x2="520" y2="160"/>
+                    <line x1="70" y1="225" x2="520" y2="225"/>
+                    <line x1="70" y1="290" x2="520" y2="290"/>
+                  </g>
+                  <path class="conf-band" d="M 80 315 Q 230 265 340 215 T 515 145 L 515 190 Q 340 250 230 295 T 80 345 Z"/>
+                  <path class="stat-curve" d="M 80 330 Q 230 280 340 232 T 515 167"/>
+                  <circle class="stat-dot d1" cx="115" cy="312" r="5"/>
+                  <circle class="stat-dot d2" cx="175" cy="296" r="5"/>
+                  <circle class="stat-dot d3" cx="240" cy="260" r="5"/>
+                  <circle class="stat-dot d4" cx="305" cy="245" r="5"/>
+                  <circle class="stat-dot d5" cx="370" cy="212" r="5"/>
+                  <circle class="stat-dot d6" cx="435" cy="195" r="5"/>
+                  <circle class="stat-dot d7" cx="495" cy="172" r="6"/>
+                </svg>
+                <div class="showcase-card">
+                  <span class="showcase-tag">REML / BLUP · Agroindustria</span>
+                  <strong class="showcase-metric" data-counter="69" data-prefix="-" data-suffix="%" data-decimals="0">-69%</strong>
+                  <span class="showcase-sub">Error RMSE entre campañas · RET</span>
+                  <span class="showcase-pill">Interacción G×E modelada</span>
+                </div>
+              </div>
+
+              <!-- Escena 2: AgTech — Visión Computacional e IA -->
+              <div class="showcase-slide" data-scene="2" aria-hidden="true">
+                <picture class="showcase-bg kb-drift">
+                  <source srcset="assets/field-agtech.webp" type="image/webp">
+                  <img src="assets/field-agtech.jpg" alt="" aria-hidden="true">
+                </picture>
+                <div class="showcase-scrim" aria-hidden="true"></div>
+                <svg class="showcase-overlay" viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <g class="focus-bracket fb1">
+                    <path d="M 95 160 L 95 135 L 120 135 M 215 135 L 240 135 L 240 160 M 240 245 L 240 270 L 215 270 M 120 270 L 95 270 L 95 245"/>
+                  </g>
+                  <g class="focus-bracket fb2">
+                    <path d="M 335 205 L 335 180 L 360 180 M 465 180 L 490 180 L 490 205 M 490 285 L 490 310 L 465 310 M 360 310 L 335 310 L 335 285"/>
+                  </g>
+                  <path class="flow-line" d="M 168 202 C 235 180, 270 250, 335 245"/>
+                  <path class="flow-line" d="M 412 245 C 455 245, 480 285, 520 300"/>
+                  <circle class="flow-node fn1" cx="168" cy="202" r="6"/>
+                  <circle class="flow-node fn2" cx="412" cy="245" r="6"/>
+                  <circle class="flow-node fn3" cx="520" cy="300" r="6"/>
+                </svg>
+                <div class="showcase-card">
+                  <span class="showcase-tag">IA &amp; Pipelines · AgTech</span>
+                  <div class="metric-ring-row">
+                    <div>
+                      <strong class="showcase-metric" data-counter="94.8" data-prefix="" data-suffix="%" data-decimals="1">94,8%</strong>
+                      <span class="showcase-sub">Precisión de detección</span>
+                    </div>
+                    <svg class="mini-ring" viewBox="0 0 44 44" aria-hidden="true">
+                      <circle class="ring-track" cx="22" cy="22" r="17"/>
+                      <circle class="ring-progress" cx="22" cy="22" r="17"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="video-glass-card showcase-dock">
+              <div class="dock-head">
+                <span class="glass-dot" aria-hidden="true"></span>
                 <strong>Visión integral de punta a punta</strong>
-                <span>Producción primaria · Agroindustria · AgTech</span>
+              </div>
+              <div class="dock-tabs" role="tablist" aria-label="Sectores analizados">
+                <button type="button" class="dock-tab is-active" role="tab" aria-selected="true" data-target="0">
+                  <span>Productores</span>
+                  <i class="dock-progress" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="dock-tab" role="tab" aria-selected="false" data-target="1">
+                  <span>Agroindustria</span>
+                  <i class="dock-progress" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="dock-tab" role="tab" aria-selected="false" data-target="2">
+                  <span>AgTech</span>
+                  <i class="dock-progress" aria-hidden="true"></i>
+                </button>
               </div>
             </div>
           </div>
