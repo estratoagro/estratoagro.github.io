@@ -42,7 +42,11 @@
   const formError = document.getElementById('form-error');
   const formSuccess = document.getElementById('form-success');
   const sentMail = document.getElementById('sent-mail');
+  const sentGmail = document.getElementById('sent-gmail');
+  const sentCopy = document.getElementById('sent-copy');
+  const copyFeedback = document.getElementById('copy-feedback');
   const sentReset = document.getElementById('sent-reset');
+  let lastCopyText = '';
 
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -62,6 +66,8 @@
       }
 
       formError.textContent = '';
+      if (copyFeedback) copyFeedback.textContent = '';
+      const subject = `Consulta Estrato — ${name}${org ? ` (${org})` : ''}`;
       const text = [
         `Nombre: ${name}${org ? ` (${org})` : ''}`,
         `Contacto: ${reply}`,
@@ -69,15 +75,52 @@
         msg
       ].join('\n');
 
-      const mailtoUrl = `mailto:${CONTACT.email}?subject=${encodeURIComponent(`Consulta Estrato — ${name}${org ? ` (${org})` : ''}`)}&body=${encodeURIComponent(text)}`;
+      const mailtoUrl = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      lastCopyText = `Para: ${CONTACT.email}\nAsunto: ${subject}\n\n${text}`;
+
       if (sentMail) sentMail.href = mailtoUrl;
+      if (sentGmail) sentGmail.href = gmailUrl;
 
       form.hidden = true;
       formSuccess.hidden = false;
     });
 
+    if (sentCopy) {
+      sentCopy.addEventListener('click', () => {
+        if (!lastCopyText) return;
+        const notifyCopied = () => {
+          if (copyFeedback) copyFeedback.textContent = 'Consulta y email copiados. Pegalos en tu correo.';
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(lastCopyText).then(notifyCopied).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = lastCopyText;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            notifyCopied();
+          });
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = lastCopyText;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          notifyCopied();
+        }
+      });
+    }
+
     if (sentReset) {
       sentReset.addEventListener('click', () => {
+        if (copyFeedback) copyFeedback.textContent = '';
         formSuccess.hidden = true;
         form.hidden = false;
       });

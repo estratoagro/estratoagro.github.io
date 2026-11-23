@@ -6,6 +6,9 @@
   <title>Estrato — Análisis personalizados de datos para el agro</title>
   <meta name="description" content="Consultora de análisis personalizados de datos para productores, empresas de la agroindustria y startups AgTech.">
   <link rel="canonical" href="https://estratoagro.github.io/">
+  <!-- Verificación de buscadores: descomentar y pegar el token asignado -->
+  <!-- <meta name="google-site-verification" content="REEMPLAZAR_TOKEN_GSC"> -->
+  <!-- <meta name="msvalidate.01" content="REEMPLAZAR_TOKEN_BING"> -->
   <meta property="og:title" content="Estrato — Análisis personalizados de datos para el agro">
   <meta property="og:description" content="Transformamos datos del agro en decisiones claras para productores, agroindustria y AgTech.">
   <meta property="og:type" content="website">
@@ -104,7 +107,7 @@
             <video
               class="hero-video"
               src="assets/aerial.mp4"
-              poster="assets/hero-poster.jpg"
+              poster="assets/hero-poster.webp"
               autoplay
               loop
               muted
@@ -198,7 +201,10 @@
         <div class="sectors-grid">
           <article class="sector-card">
             <div class="sector-img-wrap">
-              <img src="assets/field-productores.jpg" alt="Campos agrícolas al amanecer" loading="lazy">
+              <picture>
+                <source srcset="assets/field-productores.webp" type="image/webp">
+                <img src="assets/field-productores.jpg" alt="Campos agrícolas al amanecer" loading="lazy">
+              </picture>
             </div>
             <div class="sector-body">
               <h3>Productores agropecuarios</h3>
@@ -213,7 +219,10 @@
 
           <article class="sector-card">
             <div class="sector-img-wrap">
-              <img src="assets/field-agroindustria.jpg" alt="Granos cosechados en agroindustria" loading="lazy">
+              <picture>
+                <source srcset="assets/field-agroindustria.webp" type="image/webp">
+                <img src="assets/field-agroindustria.jpg" alt="Granos cosechados en agroindustria" loading="lazy">
+              </picture>
             </div>
             <div class="sector-body">
               <h3>Agroindustria</h3>
@@ -228,7 +237,10 @@
 
           <article class="sector-card">
             <div class="sector-img-wrap">
-              <img src="assets/field-agtech.jpg" alt="Cultivos en crecimiento e innovación AgTech" loading="lazy">
+              <picture>
+                <source srcset="assets/field-agtech.webp" type="image/webp">
+                <img src="assets/field-agtech.jpg" alt="Cultivos en crecimiento e innovación AgTech" loading="lazy">
+              </picture>
             </div>
             <div class="sector-body">
               <h3>Empresas AgTech</h3>
@@ -376,7 +388,10 @@
             <p>Hacé clic abajo para despachar la consulta desde tu correo:</p>
             <div class="success-actions">
               <a href="#" class="btn btn-primary" id="sent-mail">Enviar por Email</a>
+              <a href="#" class="btn btn-secondary" id="sent-gmail" target="_blank" rel="noopener noreferrer">Abrir en Gmail web</a>
+              <button type="button" class="btn btn-secondary" id="sent-copy">Copiar consulta y email</button>
             </div>
+            <span class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></span>
             <button type="button" class="link-reset" id="sent-reset">Volver al formulario</button>
           </div>
         </div>
